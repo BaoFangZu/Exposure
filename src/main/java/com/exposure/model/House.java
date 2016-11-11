@@ -2,31 +2,42 @@ package com.exposure.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="house")
 public class House {
     @Id
-    //@GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    private Long article_id;
+    //private Long article_id;
     private float price;
     private String address;
+    
+    @Column(insertable = false, updatable = false)
+    //@Temporal(TemporalType.TIMESTAMP)
     private Timestamp create_time;
+    
+    //(cascade=CascadeType.ALL)  
+    @OneToOne
+    @JoinColumn(name="article_id")
+    private Article article;
+    
 	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
-	}
-	public Long getArticle_id() {
-		return article_id;
-	}
-	public void setArticle_id(Long article_id) {
-		this.article_id = article_id;
 	}
 	public float getPrice() {
 		return price;
@@ -46,11 +57,17 @@ public class House {
 	public void setCreate_time(Timestamp create_time) {
 		this.create_time = create_time;
 	}
+	
+	public Article getArticle() {
+		return article;
+	}
+	public void setArticle(Article article) {
+		this.article = article;
+	}
 	@Override
 	public String toString() {
-		return "House [id=" + id + ", article_id=" + article_id + ", price=" + price + ", address=" + address
-				+ ", create_time=" + create_time + "]";
-	}
-    
-    
+		return "House [id=" + id + ", price=" + price + ", address=" + address + ", create_time=" + create_time
+				+ ", article=" + article + "]";
+	}   
+	
 }
