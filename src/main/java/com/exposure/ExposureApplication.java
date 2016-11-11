@@ -34,8 +34,8 @@ public class ExposureApplication {
 	     
 	    private ApiInfo apiInfo() {
 	        return new ApiInfoBuilder()
-	                .title("IAM服务")
-	                .description("IAM API")
+	                .title("exposure服务")
+	                .description("exposure API")
 	                .version("1.0.0")
 	                .contact(new Contact("wanglilong", "", "wanglilong007@gmail.com"))
 	                .build();
@@ -43,7 +43,7 @@ public class ExposureApplication {
 	    
 	    private Predicate<String> paths() {
 	        return or(
-	            regex("/user.*")
+	            regex("/houses.*")
 	            );
 	    }
 }
