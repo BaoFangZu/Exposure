@@ -19,7 +19,7 @@ public class HouseController {
 		
 		@RequestMapping(method=RequestMethod.POST)
 		public House addUser(@RequestBody House house){
-			return houseService.addUser(house);
+			return houseService.addHouse(house);
 		}
 		
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
@@ -28,7 +28,7 @@ public class HouseController {
 		}
 		
 		@RequestMapping(value="/all", method=RequestMethod.GET)
-		public Iterable<House> findAllUsers(){
+		public Iterable<House> findAllHouses(){
 			return houseService.findAll();
 		}
 		

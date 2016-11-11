@@ -10,9 +10,9 @@ public class HouseService {
 	
 	HouseRepository houseRepo;
 
-	public House addUser(House user) {
+	public House addHouse(House house) {
 		// TODO Auto-generated method stub
-		return houseRepo.save(user);
+		return houseRepo.save(house);
 	}
 
 	public void delete(long id) {
