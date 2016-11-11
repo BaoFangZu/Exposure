@@ -28,9 +28,6 @@ public class Article {
     private String path;
     private Long user_id;
     
-    @OneToOne(mappedBy="article") 
-    private House house;
-    
 	public Long getId() {
 		return id;
 	}
@@ -67,18 +64,5 @@ public class Article {
 	public void setUser_id(Long user_id) {
 		this.user_id = user_id;
 	}
-	public House getHouse() {
-		return house;
-	}
-	public void setHouse(House house) {
-		this.house = house;
-	}
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", create_time=" + create_time + ", title=" + title + ", content=" + content
-				+ ", path=" + path + ", user_id=" + user_id + ", house=" + house + "]";
-	}
-	
-	
 	
 }

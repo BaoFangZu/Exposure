@@ -29,7 +29,7 @@ public class House {
     private Timestamp create_time;
     
     //(cascade=CascadeType.ALL)  
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL) 
     @JoinColumn(name="article_id")
     private Article article;
     
