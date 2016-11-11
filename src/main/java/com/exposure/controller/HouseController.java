@@ -18,12 +18,12 @@ public class HouseController {
 		HouseService houseService;
 		
 		@RequestMapping(method=RequestMethod.POST)
-		public House addUser(@RequestBody House house){
+		public House addHouse(@RequestBody House house){
 			return houseService.addHouse(house);
 		}
 		
 		@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
-		public void delUser(@PathVariable long id){
+		public void delHouse(@PathVariable long id){
 			houseService.delete(id);
 		}
 		
