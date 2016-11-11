@@ -1,7 +1,5 @@
 package com.exposure.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.exposure.model.House;
