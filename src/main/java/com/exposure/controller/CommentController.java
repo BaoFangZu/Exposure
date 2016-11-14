@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.exposure.model.Comment;
 import com.exposure.service.CommentService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
+@Api(value = "评论管理")
 @RestController
 @RequestMapping("/comments")
 public class CommentController {
@@ -19,11 +23,13 @@ public class CommentController {
 	@Autowired
 	private CommentService commentService;
 	
+	@ApiOperation("发表一条评论")
 	@RequestMapping(method=RequestMethod.POST)
 	public Comment postComment(@RequestBody Comment comment){
 		return commentService.postComment(comment);
 	}
 	
+	@ApiOperation("分页获取评论")
 	@RequestMapping(method=RequestMethod.GET)
 	public Page<Comment> getComments(
 			@RequestParam(value="limit", required=false, defaultValue="20") int limit, 
@@ -32,6 +38,7 @@ public class CommentController {
 		return commentService.getComments(limit, page);
 	}
 	
+	@ApiOperation("删除一条评论")
 	@RequestMapping(value="/{id}", method=RequestMethod.DELETE)
 	public void deleteCommet(@PathVariable long id){
 		commentService.deleteComment(id);

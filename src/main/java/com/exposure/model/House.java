@@ -14,6 +14,10 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description = "房源")
 @Entity
 @Table(name="house")
 public class House {
@@ -21,15 +25,21 @@ public class House {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     
+    @ApiModelProperty("标题")
     private String title;
+    @ApiModelProperty("内容")
     private String content;
     
+    @ApiModelProperty("价格")
     private float price;
+    @ApiModelProperty("地址")
     private String address;
     
+    @ApiModelProperty("创建者id")
     @Column(name="user_id")
     private Long userId;
 
+    @ApiModelProperty(value="创建时间", dataType="string")
     @Column(name="create_time",insertable = false, updatable = false)
     private Timestamp createTime;
     
