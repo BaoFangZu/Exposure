@@ -20,18 +20,18 @@ public class House {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-    //private Long article_id;
+    
+    private String title;
+    private String content;
+    
     private float price;
     private String address;
     
-    @Column(insertable = false, updatable = false)
-    //@Temporal(TemporalType.TIMESTAMP)
-    private Timestamp create_time;
-    
-    //(cascade=CascadeType.ALL)  
-    @OneToOne(cascade=CascadeType.ALL) 
-    @JoinColumn(name="article_id")
-    private Article article;
+    @Column(name="user_id")
+    private Long userId;
+
+    @Column(name="create_time",insertable = false, updatable = false)
+    private Timestamp createTime;
     
 	public Long getId() {
 		return id;
@@ -51,23 +51,30 @@ public class House {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Timestamp getCreate_time() {
-		return create_time;
+	public String getTitle() {
+		return title;
 	}
-	public void setCreate_time(Timestamp create_time) {
-		this.create_time = create_time;
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+	public Timestamp getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
 	}
 	
-	public Article getArticle() {
-		return article;
-	}
-	public void setArticle(Article article) {
-		this.article = article;
-	}
-	@Override
-	public String toString() {
-		return "House [id=" + id + ", price=" + price + ", address=" + address + ", create_time=" + create_time
-				+ ", article=" + article + "]";
-	}   
 	
 }
