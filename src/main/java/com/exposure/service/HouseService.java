@@ -1,21 +1,31 @@
 package com.exposure.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.exposure.model.House;
 import com.exposure.repository.HouseRepository;
+import com.exposure.util.PageRequestFactory;
 
 @Service
 public class HouseService {
 	
+	private static final  String TIME_SORT = "createTime";
+	private static final  String ID_SORT = "id";
+	
 	@Autowired
 	HouseRepository houseRepo;
+	
+	@Autowired
+	PageRequestFactory pageRequestFactory;
 	
 	public House addHouse(House house) {
 		// TODO Auto-generated method stub
@@ -49,8 +59,12 @@ public class HouseService {
 			direction = Direction.ASC;
 		}
 		
+		List<Order> orders = new ArrayList<Order>();
+		orders.add(new Order(direction, TIME_SORT));
+		orders.add(new Order(Direction.DESC, ID_SORT));
+		
 		Page<House> houses = null;
-		Pageable onePage = createPageRequest(limit, page, direction, sortAttr);
+		Pageable onePage = pageRequestFactory.createPageRequest(limit, page, orders);
 		
 		if (title==null && content==null) {
 			houses = houseRepo.findAll(onePage);
@@ -64,11 +78,5 @@ public class HouseService {
 		PageRequest onePage = new PageRequest(page, limit);
 		Page<House> houses = houseRepo.findAll(onePage);
 		return houses;
-	}
-
-	private Pageable createPageRequest(int limit, int page, Direction dir, String attr){
-		Sort sort = new Sort(dir, attr);
-		PageRequest onePage = new PageRequest(page, limit, sort);
-		return onePage;
 	}
 }

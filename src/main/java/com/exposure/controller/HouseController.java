@@ -44,7 +44,7 @@ public class HouseController {
 		@RequestMapping(method=RequestMethod.GET)
 		public Page<House> findHouses(
 				@RequestParam(value="limit", required=false, defaultValue="20") int limit, 
-				@RequestParam(value="page", required=false, defaultValue="1") int page,
+				@RequestParam(value="page", required=false, defaultValue="0") int page,
 				@RequestParam(value="title", required=false) String title,
 				@RequestParam(value="content", required=false) String content,
 				@RequestParam(value="direction", required=false, defaultValue="desc") String direction,

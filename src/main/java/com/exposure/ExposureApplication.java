@@ -45,7 +45,8 @@ public class ExposureApplication {
 	    
 	    private Predicate<String> paths() {
 	        return or(
-	            regex("/houses.*")
+	            regex("/houses.*"),
+	            regex("/comments.*")
 	            );
 	    }
 }

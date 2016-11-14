@@ -2,6 +2,7 @@ package com.exposure.model;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,10 +16,17 @@ public class Comment {
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
     private String content;
-    private Long target_id;
-    private Long user_id;
+    
+    @Column(name="target_id")
+    private Long targetId;
+    
+    @Column(name="user_id")
+    private Long userId;
+    
     private String type;
-    private Timestamp create_time;
+    
+    @Column(name="create_time",insertable = false, updatable = false)
+    private Timestamp createTime;
     
 	public Long getId() {
 		return id;
@@ -32,17 +40,17 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Long getTarget_id() {
-		return target_id;
+	public Long getTargetId() {
+		return targetId;
 	}
-	public void setTarget_id(Long target_id) {
-		this.target_id = target_id;
+	public void setTargetId(Long targetId) {
+		this.targetId = targetId;
 	}
-	public Long getUser_id() {
-		return user_id;
+	public Long getUserId() {
+		return userId;
 	}
-	public void setUser_id(Long user_id) {
-		this.user_id = user_id;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 	public String getType() {
 		return type;
@@ -50,12 +58,11 @@ public class Comment {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Timestamp getCreate_time() {
-		return create_time;
+	public Timestamp getCreateTime() {
+		return createTime;
 	}
-	public void setCreate_time(Timestamp create_time) {
-		this.create_time = create_time;
+	public void setCreateTime(Timestamp createTime) {
+		this.createTime = createTime;
 	}
-    
     
 }
