@@ -31,13 +31,14 @@ public class CommentService {
 		return commentRepo.save(comment);
 	}
 
-	public Page<Comment> getComments(int limit, int page) {
+	public Page<Comment> getComments(int limit, int page, long targetId) {
 		// TODO Auto-generated method stub
 		List<Order> orders = new ArrayList<Order>();
-		orders.add(new Order(Direction.DESC, TIME_SORT));
-		orders.add(new Order(Direction.DESC, ID_SORT));
+		orders.add(new Order(Direction.ASC, TIME_SORT));
+		orders.add(new Order(Direction.ASC, ID_SORT));
 		Pageable pageReq = pageRequestFactory.createPageRequest(limit, page, orders);
-		return commentRepo.findAll(pageReq);
+		return commentRepo.findByTargetId(targetId, pageReq);
+		//return commentRepo.findAll(pageReq);
 	}
 
 	public void deleteComment(long id) {

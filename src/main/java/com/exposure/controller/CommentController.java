@@ -33,9 +33,10 @@ public class CommentController {
 	@RequestMapping(method=RequestMethod.GET)
 	public Page<Comment> getComments(
 			@RequestParam(value="limit", required=false, defaultValue="20") int limit, 
-			@RequestParam(value="page", required=false, defaultValue="0") int page
+			@RequestParam(value="page", required=false, defaultValue="0") int page,
+			@RequestParam(value="target_id", required=false, defaultValue="0") long target_id
 			){
-		return commentService.getComments(limit, page);
+		return commentService.getComments(limit, page, target_id);
 	}
 	
 	@ApiOperation("删除一条评论")
