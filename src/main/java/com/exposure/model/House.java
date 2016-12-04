@@ -1,18 +1,15 @@
 package com.exposure.model;
 
 import java.sql.Timestamp;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,6 +39,10 @@ public class House {
     @ApiModelProperty(value="创建时间", dataType="string")
     @Column(name="create_time",insertable = false, updatable = false)
     private Timestamp createTime;
+    
+//    @ApiModelProperty("附件")
+//    @OneToMany(mappedBy="house")
+//    private List<Attachment> attachment;
     
 	public Long getId() {
 		return id;
@@ -85,6 +86,11 @@ public class House {
 	public void setCreateTime(Timestamp createTime) {
 		this.createTime = createTime;
 	}
-	
+//	public List<Attachment> getAttachment() {
+//		return attachment;
+//	}
+//	public void setAttachment(List<Attachment> attachment) {
+//		this.attachment = attachment;
+//	}
 	
 }
