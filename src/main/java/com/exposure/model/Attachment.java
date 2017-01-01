@@ -36,7 +36,7 @@ public class Attachment {
 //    private House house;
  
     @ApiModelProperty("房源id")
-    @Column(name="house_id",insertable = false, updatable = false)
+    @Column(name="house_id")
     private long houseId;
     
     @ApiModelProperty(value="评论时间", dataType="string")

@@ -11,7 +11,11 @@ spring:
 
 server:
    port: 5555
-   
+security:
+  sessions: NEVER
+management:
+  security:
+    enabled: false
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
