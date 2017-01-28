@@ -7,7 +7,6 @@ spring:
   redis:
     host: 10.22.59.82
     port: 6379
-    password: HuaWei!@#123
 
 server:
    port: 5555
